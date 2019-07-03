@@ -1,6 +1,10 @@
 cwlVersion: v1.0
 class: CommandLineTool
 
+hints:   
+  DockerRequirement:     
+    dockerPull: sjaenick/bamstats
+
 label: "bamstats: BAM alignment statistics per reference sequence"
 
 baseCommand: bamstats
@@ -13,10 +17,12 @@ inputs:
     inputBinding:
       position: 1
 
-  tsvOutput:
-    type: string
-    inputBinding:
-      position: 2
+arguments:
+  - position: 2
+    valueFrom: |
+      ${
+        return inputs.bamFile.nameroot + ".tsv"
+      }
 
 outputs:
 
@@ -24,5 +30,5 @@ outputs:
     type: File
     format: http://edamontology.org/format_3475 # TSV
     outputBinding:
-      glob: $(inputs.tsvOutput)
+      glob: $(inputs.bamFile.nameroot + ".tsv")
 
