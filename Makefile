@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -O3 -g -fPIC
-CPPFLAGS = -I. -I/vol/mgx-sw/include/htslib
+CPPFLAGS = -I. -I/vol/mgx-sw/include/htslib -I/vol/mgx-sw/include
 LDFLAGS = -fPIC -pthread 
 
 all:	bamstats
