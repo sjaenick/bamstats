@@ -10,7 +10,7 @@ clean:
 
 OBJS = bamstats.o
 
-bamstats:	$(OBJS) *.h
+bamstats:	$(OBJS)
 	$(CC) -g -o $@ $(OBJS) $(LDFLAGS) `pkg-config --libs htslib`
 
 %.o: %.c
