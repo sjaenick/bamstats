@@ -4,9 +4,9 @@
 #include <zlib.h>
 #include <errno.h>
 
-#include "bgzf.h"
-#include "sam.h"
-#include "khash.h"
+#include <htslib/bgzf.h>
+#include <htslib/sam.h>
+#include <htslib/khash.h>
 
 KHASH_MAP_INIT_STR(str, uint64_t) 
 

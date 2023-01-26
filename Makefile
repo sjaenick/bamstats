@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -O3 -g -fPIC
-CPPFLAGS = -I. -I/vol/mgx-sw/include/htslib -I/vol/mgx-sw/include
+CPPFLAGS = -I. `pkg-config --cflags htslib`
 LDFLAGS = -fPIC -pthread 
 
 all:	bamstats
@@ -11,7 +11,7 @@ clean:
 OBJS = bamstats.o
 
 bamstats:	$(OBJS) *.h
-	$(CC) -g -o $@ $(OBJS) $(LDFLAGS) /vol/mgx-sw/lib/libhts.a -ldl -lz
+	$(CC) -g -o $@ $(OBJS) $(LDFLAGS) `pkg-config --libs htslib`
 
 %.o: %.c *.h
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o $@ $<
