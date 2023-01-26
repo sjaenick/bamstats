@@ -13,6 +13,6 @@ OBJS = bamstats.o
 bamstats:	$(OBJS) *.h
 	$(CC) -g -o $@ $(OBJS) $(LDFLAGS) `pkg-config --libs htslib`
 
-%.o: %.c *.h
+%.o: %.c
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o $@ $<
 
