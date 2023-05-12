@@ -53,7 +53,8 @@ int bam_reader(char* bamfile, char* outfile) {
             char* ref = hdr->target_name[tid];
             k = kh_get(str, h, ref);
             if (k == kh_end(h)) { // miss
-                fprintf(stderr, "error\n");
+                fprintf(stderr, "error for reference sequence %s\n", ref);
+                return -1;
             } else {
                 cnt = kh_val(h, k);
                 kh_value(h, k) = ++cnt;
