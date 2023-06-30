@@ -48,6 +48,8 @@ int bam_reader(char* bamfile, char* outfile) {
     uint64_t cnt;
     bam1_t *b = bam_init1();
     while (bam_read1(fp, b) >= 0) {
+        // 0x4   - read is unmapped
+        // 0x400 - optical or PCR duplicate
         if (((b->core.flag & 0x4) == 0) && ((b->core.flag & 0x400) == 0)) {
             int32_t tid = b->core.tid;
             char* ref = hdr->target_name[tid];
